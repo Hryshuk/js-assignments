@@ -205,7 +205,12 @@ function isInsideCircle(circle, point) {
  *   'entente' => null
  */
 function findFirstSingleChar(str) {
-    throw new Error('Not implemented');
+    //throw new Error('Not implemented');
+    for (let i = 0; i < str.length; i++) {
+        if (str.replace(str[i], "").indexOf(str[i]) == -1) {
+            return str[i];
+        }
+    }
 }
 
 
@@ -231,7 +236,27 @@ function findFirstSingleChar(str) {
  *
  */
 function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
-    throw new Error('Not implemented');
+    //throw new Error('Not implemented');
+    let res = "";
+
+    if (isStartIncluded) {
+        res += "[";
+    } else {
+        res += "(";
+    }
+
+    if (a < b) {
+        res += a + ", " + b;
+    } else {
+        res += b + ", " + a;
+    }
+
+    if (isEndIncluded) {
+        res += "]";
+    } else {
+        res += ")";
+    }
+    return res;
 }
 
 
@@ -248,7 +273,8 @@ function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
  * 'noon' => 'noon'
  */
 function reverseString(str) {
-    throw new Error('Not implemented');
+    //throw new Error('Not implemented');
+    return str.split("").reverse().join("");
 }
 
 
@@ -265,7 +291,8 @@ function reverseString(str) {
  *   34143 => 34143
  */
 function reverseInteger(num) {
-    throw new Error('Not implemented');
+    //throw new Error('Not implemented');
+    return parseInt(num.toString().split("").reverse().join(""));
 }
 
 
@@ -290,7 +317,13 @@ function reverseInteger(num) {
  *   4916123456789012 => false
  */
 function isCreditCardNumber(ccn) {
-    throw new Error('Not implemented');
+    //throw new Error('Not implemented');
+    return ccn.toString().split('')
+        .reverse()
+        .map( (x) => parseInt(x) )
+        .map( (x, idx) => idx % 2 ? x * 2 : x )
+        .map( (x) => x > 9 ? (x % 10) + 1 : x )
+        .reduce( (accum, x) => accum += x ) % 10 === 0;
 }
 
 
